@@ -171,7 +171,7 @@ namespace Project.Networking {
             On(NetworkTags.SERVER_VALIDATION, (E) => {
                 Debug.Log("Close down socket");
                 LoaderManager.Instance.LoadLevel(SceneList.LOGIN, (LevelName) => {
-                    LoaderManager.Instance.UnLoadLevel(SceneList.GAME);
+                    LoaderManager.Instance.UnLoadLevel(SceneList.ONLINE);
                     ApplicationManager.Instance.ShowIntroGraphics();
                 });
                 Close();
@@ -238,7 +238,7 @@ namespace Project.Networking {
                 isConnected = true;
                 Close();
                 LoaderManager.Instance.LoadLevel(SceneList.MAIN_MENU_SCREEN, (LevelName) => {
-                    LoaderManager.Instance.UnLoadLevel(SceneList.GAME);
+                    LoaderManager.Instance.UnLoadLevel(SceneList.ONLINE);
                     LoaderManager.Instance.UnLoadLevel(SceneList.GetMapByIndex(PlayerInformation.Instance.CurrentRealm));
                     ApplicationManager.Instance.ShowIntroGraphics();
                 });                
