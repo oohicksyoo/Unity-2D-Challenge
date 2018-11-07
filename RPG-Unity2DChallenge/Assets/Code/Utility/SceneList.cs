@@ -10,8 +10,8 @@ namespace Project.Utility {
         public static string ONLINE = "Online";
 
         private static Dictionary<int, string> MapDictionary = new Dictionary<int, string>() {
-            {1, "Map_TheHub"},
-            {2, "Map_Dungeon"}
+            {1, "Map_Testing"},
+            {2, "Map_"}
         };
 
         public static string GetMapByIndex(int Value) {
