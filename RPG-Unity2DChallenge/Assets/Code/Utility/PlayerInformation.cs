@@ -15,4 +15,9 @@ namespace Project.Utility {
         [HideInInspector]
         public int OldRealm = -1;
 	}
+
+    public enum Team {
+        Red = 0,
+        Blue = 1
+    }
 }
