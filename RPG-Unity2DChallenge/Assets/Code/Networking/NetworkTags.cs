@@ -30,5 +30,10 @@ namespace Project.Networking {
 
         //Validation
         public const string SERVER_VALIDATION = "serverValidation";
+        public const string SERVER_VALIDATION_COMPLETE = "validationComplete";
+
+        //Queue
+        public const string JOIN_QUEUE = "joinQueue";
+        public const string LEAVE_QUEUE = "leaveQueue";
     }
 }

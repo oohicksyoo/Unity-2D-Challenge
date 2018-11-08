@@ -6,7 +6,7 @@ namespace Project.Utility {
     public static class MethodExtensions {
         
         //Set alpha of a colour property
-		public static Color SetAlpha(this Color C, int Alpha) {
+		public static Color SetAlpha(this Color C, float Alpha) {
             Alpha = Mathf.Clamp(Alpha, 0, 1);
             C.a = Alpha;
             return C;

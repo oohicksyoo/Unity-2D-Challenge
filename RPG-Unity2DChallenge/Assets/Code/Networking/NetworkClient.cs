@@ -24,6 +24,7 @@ namespace Project.Networking {
         public static Action<SocketIOEvent> OnAnimationUpdate = (E) => { };
         public static Action<SocketIOEvent> OnUpdateStats = (E) => { };
         public static Action<SocketIOEvent> OnGeneralEvent = (E) => { };
+        public static Action<NetworkClient> OnValidatedToServer = (E) => { };
 
         [Header("Network Client")]
         [SerializeField]
@@ -213,6 +214,10 @@ namespace Project.Networking {
                     //ni.transform.position = PlayerInformation.Instance.SpawnLocation;
                 }, true);
             });
+
+            On(NetworkTags.SERVER_VALIDATION_COMPLETE, (E) => {
+                OnValidatedToServer.Invoke(this);
+            });
 		}
 
         public override void Update() {
@@ -252,6 +257,18 @@ namespace Project.Networking {
         public void ForcePlayerToIdle() {
             NetworkIdentity ni = networkIdentities.Single(i => i.GetID() == ClientID);
             ni.GetComponent<NetworkAnimator>().ForceToIdle();
+        }
+
+        public NetworkIdentity GetMyPlayer() {
+            return networkIdentities.Single(i => i.GetID() == ClientID);
+        }
+
+        public void OnJoinQueue() {
+            Emit(NetworkTags.JOIN_QUEUE);
+        }
+
+        public void OnLeaveQueue() {
+            Emit(NetworkTags.LEAVE_QUEUE);
         }
     }
 

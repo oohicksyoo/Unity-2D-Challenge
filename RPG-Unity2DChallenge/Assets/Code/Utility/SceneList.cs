@@ -8,10 +8,10 @@ namespace Project.Utility {
         public static string LOGIN = "Login";
         public static string MAIN_MENU_SCREEN = "MainMenu";
         public static string ONLINE = "Online";
+        public static string GAME_LOBBY = "GameLobby";
 
         private static Dictionary<int, string> MapDictionary = new Dictionary<int, string>() {
-            {1, "Map_Testing"},
-            {2, "Map_"}
+            {1, "Map_Testing"}
         };
 
         public static string GetMapByIndex(int Value) {
