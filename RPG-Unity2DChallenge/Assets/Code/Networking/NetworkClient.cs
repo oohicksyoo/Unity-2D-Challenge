@@ -25,6 +25,7 @@ namespace Project.Networking {
         public static Action<SocketIOEvent> OnUpdateStats = (E) => { };
         public static Action<SocketIOEvent> OnGeneralEvent = (E) => { };
         public static Action<NetworkClient> OnValidatedToServer = (E) => { };
+        public static Action OnJoinLobby = () => { };
 
         [Header("Network Client")]
         [SerializeField]
@@ -217,6 +218,10 @@ namespace Project.Networking {
 
             On(NetworkTags.SERVER_VALIDATION_COMPLETE, (E) => {
                 OnValidatedToServer.Invoke(this);
+            });
+
+            On(NetworkTags.JOIN_LOBBY, (E) => {
+                OnJoinLobby.Invoke();
             });
 		}
 

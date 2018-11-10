@@ -35,5 +35,10 @@ namespace Project.Networking {
         //Queue
         public const string JOIN_QUEUE = "joinQueue";
         public const string LEAVE_QUEUE = "leaveQueue";
+
+        //Lobby
+        public const string JOIN_LOBBY = "joinLobby";
+        public const string LEAVE_LOBBY = "leaveLobby";
+        public const string CHANGE_TEAM_LOBBY = "changeTeamLobby";
     }
 }

@@ -38,7 +38,10 @@ namespace Project.Manager {
             queueButtonText.color = queueButtonText.color.SetAlpha(0.5f);
             leaveQueue.SetActive(false);
             isInQueue = false;
+
             NetworkClient.OnValidatedToServer += onServerValidation;
+            NetworkClient.OnJoinLobby += onJoinLobby;
+
             LoaderManager.Instance.LoadLevel(SceneList.ONLINE, (E) => {});
 		}
 
@@ -69,6 +72,14 @@ namespace Project.Manager {
             queueButton.gameObject.SetActive(true);
             leaveQueue.SetActive(false);
             isInQueue = false;
+        }
+
+        private void onJoinLobby() {
+            leaveQueue.SetActive(false);
+            isInQueue = false;
+            LoaderManager.Instance.LoadLevel(SceneList.GAME_LOBBY, (E) => {
+                LoaderManager.Instance.UnLoadLevel(SceneList.MAIN_MENU_SCREEN);
+            });
         }
     }
 }
