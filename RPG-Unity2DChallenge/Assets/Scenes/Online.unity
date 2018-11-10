@@ -515,9 +515,7 @@ MonoBehaviour:
   ackExpirationTime: 1800
   pingInterval: 25
   pingTimeout: 60
-  playerConnectionPrefab: {fileID: 1472415051136038, guid: e1e2f341500455f429e9b9181b110544,
-    type: 2}
-  playerPrefab: {fileID: 1762848898050010, guid: 75f7d76081f74bf4397b995163071b98,
+  playerPrefab: {fileID: 1783095553022072, guid: 3746c58b215c4394a81e99fef19fc0a4,
     type: 2}
   playerContainer: {fileID: 1843670156}
   serverObjects: {fileID: 11400000, guid: 28b090fa1af928f4292769ded58e0988, type: 2}

@@ -20,7 +20,7 @@ namespace Project.Player {
             dif.Normalize();
             float rot = Mathf.Atan2(dif.y, dif.x) * Mathf.Rad2Deg;
 
-            Debug.Log(rot);
+            //Debug.Log(rot);
 
             if(rot > 90 || rot < -90) {
                 transform.localScale = new Vector3(-1, 1, 1);

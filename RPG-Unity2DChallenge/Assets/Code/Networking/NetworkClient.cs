@@ -109,6 +109,8 @@ namespace Project.Networking {
                         }
                     }*/
 
+                    PlayerInformation.Instance.SetVirtualCamera(ni.transform);
+
                     networkIdentities.Add(ni);
                 }
             });
@@ -158,6 +160,8 @@ namespace Project.Networking {
                     var ni = spawnedObject.GetComponent<NetworkIdentity>();
                     ni.SetControllerID(id);
                     ni.SetSocketReference(this);
+
+                    PlayerInformation.Instance.SetVirtualCamera(ni.transform);
 
                     networkIdentities.Add(ni);
                 }
@@ -222,6 +226,12 @@ namespace Project.Networking {
 
             On(NetworkTags.JOIN_LOBBY, (E) => {
                 OnJoinLobby.Invoke();
+            });
+
+            On(NetworkTags.START_GAME, (E) => {
+                LoaderManager.Instance.LoadLevel(SceneList.GetMapByIndex(1), (Val) => {
+                    LoaderManager.Instance.UnLoadLevel(SceneList.GAME_LOBBY);
+                });
             });
 		}
 
