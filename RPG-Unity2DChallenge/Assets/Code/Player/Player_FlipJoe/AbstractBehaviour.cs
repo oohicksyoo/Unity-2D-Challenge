@@ -23,6 +23,13 @@ namespace Project.Player.Player_FlipJoe
         void FixedUpdate()
         {
             rb.velocity += new Vector2(rb.velocity.x,playerStats.GetGravity()) * Time.deltaTime; 
+
+        }
+
+
+        private void OnCollision2D(Collision2D other)
+        {
+           
         }
 
     }

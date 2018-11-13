@@ -63,7 +63,7 @@ namespace Project.Player.Player_FlipJoe
             actionCooldown = new Cooldown(0.75f);
             interactionCooldown = new Cooldown(0.1f);
             dashCooldown = new Cooldown(6.5f);
-            jumpCooldown = new Cooldown(1.0f);
+            jumpCooldown = new Cooldown(0.3f);
 
             networkIdentity = GetComponent<NetworkIdentity>();
         }
