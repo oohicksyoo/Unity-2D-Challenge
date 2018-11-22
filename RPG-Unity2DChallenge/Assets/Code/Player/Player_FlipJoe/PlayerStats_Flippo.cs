@@ -6,7 +6,6 @@ namespace Project.Player.Player_FlipJoe
 {
     public class PlayerStats_Flippo : MonoBehaviour
     {
-
         [Header("Movement")]
         [Range(0.1f, 10)]
         [SerializeField]

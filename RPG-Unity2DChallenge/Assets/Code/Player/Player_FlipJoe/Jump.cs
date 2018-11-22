@@ -6,14 +6,12 @@ namespace Project.Player.Player_FlipJoe
 {
     public class Jump : AbstractBehaviour
     {
-       
         // Use this for initialization
         void Start()
         {
             playerInput.OnJump += onMaxJump;
             playerInput.OnStopJump += onMinJump; 
         }
-
 
         public void onMaxJump()
         {

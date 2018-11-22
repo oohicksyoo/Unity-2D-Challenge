@@ -17,7 +17,8 @@ namespace Project.Player.Player_FlipJoe
         public Action OnDash = delegate () { };
         public Action OnInteractionRequest = delegate () { };
         public Action OnJump = () => { };
-        public Action OnStopJump = () => { }; 
+        public Action OnStopJump = () => { };
+        public Func<bool> OnCheckGround;
 
         [Header("Movement")]
         [SerializeField]
@@ -57,6 +58,8 @@ namespace Project.Player.Player_FlipJoe
         private Cooldown interactionCooldown;
         private Cooldown dashCooldown;
         private Cooldown jumpCooldown;
+        private bool doubleJump;
+        private bool jumped;
 
         public void Start()
         {
@@ -138,16 +141,16 @@ namespace Project.Player.Player_FlipJoe
                 OnInteractionRequest.Invoke();
             }
 
-            if (Input.GetKeyDown(jump) && !jumpCooldown.IsOnCooldown())
+            if (Input.GetKeyDown(jump) && OnCheckGround())
             {
                 OnJump.Invoke();
             }
 
-            if (Input.GetKeyUp(jump) && !jumpCooldown.IsOnCooldown())
-            {
-                OnStopJump.Invoke(); 
-                jumpCooldown.StartCooldown();
-            }
+            // if (Input.GetKeyUp(jump) && !jumpCooldown.IsOnCooldown())
+            // {
+            //     OnStopJump.Invoke();
+            //     jumpCooldown.StartCooldown();
+            // }
         }
     }
 }

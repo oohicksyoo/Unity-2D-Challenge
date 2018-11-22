@@ -5,15 +5,10 @@ using UnityEngine;
 
 namespace Project.Player.Player_FlipJoe
 {
-
     public class PlayerManager_Flippo : MonoBehaviour
     {
-
         private Animator anim;
-
         private PlayerInput_Flippo playerInput;
-
-
         private CollisionState collisionState; 
 
         // Use this for initialization
@@ -25,6 +20,7 @@ namespace Project.Player.Player_FlipJoe
             playerInput.OnMovement += onMovement;
             playerInput.OnJump += onJump;
             playerInput.OnStopJump += onStopJump;
+            playerInput.OnCheckGround = collisionState.CheckGround;
         }
 
         // Update is called once per frame
@@ -33,9 +29,6 @@ namespace Project.Player.Player_FlipJoe
             if (collisionState.Collided) { }
                 //anim.SetBool("Jump", false);
         }
-
-
-
 
         private void onMovement(Vector3 move)
         {

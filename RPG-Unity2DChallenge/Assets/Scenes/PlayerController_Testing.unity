@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 7532912}
   - component: {fileID: 7532911}
   - component: {fileID: 7532913}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gameplay Layer - Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2313,6 +2313,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8debe71be6ebc5b4f84e3a7b2acac257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundCheckerRadius: 0.04
+  groundCheckerOffset: {x: 0, y: -1, z: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &637267462
 GameObject:
   m_ObjectHideFlags: 0
