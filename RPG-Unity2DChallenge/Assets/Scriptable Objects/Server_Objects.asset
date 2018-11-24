@@ -11,4 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1345e82f61e7a784db4c702941bc92f9, type: 3}
   m_Name: Server_Objects
   m_EditorClassIdentifier: 
-  Objects: []
+  Objects:
+  - Name: Bullet
+    Prefab: {fileID: 1190162800071158, guid: ab2645ed35f47164795644fd80929b10, type: 2}

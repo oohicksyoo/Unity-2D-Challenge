@@ -56,7 +56,7 @@ namespace Project.Player {
         private Cooldown jumpCooldown;
 
         public void Start() {
-            actionCooldown = new Cooldown(0.75f);
+            actionCooldown = new Cooldown(0.5f);
             interactionCooldown = new Cooldown(0.1f);
             dashCooldown = new Cooldown(6.5f);
             jumpCooldown = new Cooldown(1.0f);
@@ -65,7 +65,7 @@ namespace Project.Player {
         }
 
         public void FixedUpdate () {
-            if ((networkIdentity.IsControlling() || isTesting) && !actionCooldown.IsOnCooldown()) {
+            if ((networkIdentity.IsControlling() || isTesting)) {
                 checkMovement();                
             }
         }

@@ -26,6 +26,7 @@ namespace Project.Networking {
         public static Action<SocketIOEvent> OnGeneralEvent = (E) => { };
         public static Action<NetworkClient> OnValidatedToServer = (E) => { };
         public static Action OnJoinLobby = () => { };
+        public static Action<SocketIOEvent> OnLobbyUpdate = (E) => { };
 
         [Header("Network Client")]
         [SerializeField]
@@ -109,8 +110,12 @@ namespace Project.Networking {
                         }
                     }*/
 
-                    PlayerInformation.Instance.SetVirtualCamera(ni.transform);
-
+                    if (ni.IsControlling()) {
+                        PlayerInformation.Instance.SetVirtualCamera(ni.transform);
+                    } else {
+                        //Remove Rigid body from non controlled players
+                        DestroyImmediate(player.GetComponent<Rigidbody2D>());
+                    }
                     networkIdentities.Add(ni);
                 }
             });
@@ -151,6 +156,7 @@ namespace Project.Networking {
                 string id = E.data["id"].ToString();
                 float x = E.data["position"]["x"].f;
                 float y = E.data["position"]["y"].f;
+                bool isRight = E.data["isRight"].b;
                 Debug.LogFormat("Server wants us to spawn a '{0}'", name);
 
                 if (!networkIdentities.Any(obj => obj.GetID() == id)) {
@@ -161,9 +167,23 @@ namespace Project.Networking {
                     ni.SetControllerID(id);
                     ni.SetSocketReference(this);
 
-                    PlayerInformation.Instance.SetVirtualCamera(ni.transform);
+                    Vector3 scale = spawnedObject.transform.localScale;
+                    scale.x *= (isRight) ? 1 : -1; //Flip x if facing other direction
+                    spawnedObject.transform.localScale = scale;
 
-                    networkIdentities.Add(ni);
+                    //If bullet apply direction as well
+                    if (name == "Bullet") {
+                        float directionX = E.data["direction"]["x"].f;
+                        float directionY = E.data["direction"]["y"].f;
+
+                        float rot = Mathf.Atan2(directionY, directionX) * Mathf.Rad2Deg;
+                        Debug.LogFormat("Rotation Value {0}", rot);
+                        float offset = (isRight) ? 0 : 180;
+                        Vector3 currentRotation = new Vector3(0, 0, rot - offset);
+                        spawnedObject.transform.rotation = Quaternion.Euler(currentRotation);
+                    }
+
+                    networkIdentities.Add(ni);                    
                 }
             });
 
@@ -228,6 +248,10 @@ namespace Project.Networking {
                 OnJoinLobby.Invoke();
             });
 
+            On(NetworkTags.LOBBY_UPDATE, (E) => {
+                OnLobbyUpdate.Invoke(E);
+            });
+
             On(NetworkTags.START_GAME, (E) => {
                 LoaderManager.Instance.LoadLevel(SceneList.GetMapByIndex(1), (Val) => {
                     LoaderManager.Instance.UnLoadLevel(SceneList.GAME_LOBBY);
@@ -257,7 +281,7 @@ namespace Project.Networking {
                 Debug.Log("Close down socket");
                 isConnected = true;
                 Close();
-                LoaderManager.Instance.LoadLevel(SceneList.MAIN_MENU_SCREEN, (LevelName) => {
+                LoaderManager.Instance.LoadLevel(SceneList.LOGIN, (LevelName) => {
                     LoaderManager.Instance.UnLoadLevel(SceneList.ONLINE);
                     LoaderManager.Instance.UnLoadLevel(SceneList.GetMapByIndex(PlayerInformation.Instance.CurrentRealm));
                     ApplicationManager.Instance.ShowIntroGraphics();
@@ -291,6 +315,14 @@ namespace Project.Networking {
     public class Player {
         public string id;
         public Position position;
+    }
+
+    [Serializable]
+    public class Bullet {
+        public string id;
+        public bool isRight;
+        public Position position;
+        public Position direction;
     }
 
     [Serializable]

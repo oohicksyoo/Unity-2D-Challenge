@@ -23,15 +23,23 @@ namespace Project.Player {
         [SerializeField]
         private EmoteHandler emoteHandler;*/
 
+        [Header("Bullet")]
+        [SerializeField]
+        private Transform bulletSpawnPoint;
+
         [Header("Class References")]
         [SerializeField]
         private PlayerInput playerInput;
         [SerializeField]
         private PlayerStats playerStats;
         [SerializeField]
+        private PlayerAiming playerAiming;
+        [SerializeField]
         private Animator animator;
         [SerializeField]
         private NetworkTransform networkTransform;
+        [SerializeField]
+        private NetworkIdentity networkIdentity;
         [SerializeField]
         private Rigidbody2D rb;
 
@@ -77,7 +85,20 @@ namespace Project.Player {
         }
 
         private void onAction() {
-            animator.SetTrigger("isAttacking");
+            //animator.SetTrigger("isAttacking");
+
+            Vector3 facingDirection = (playerAiming.IsFacingRight()) ? bulletSpawnPoint.right : -bulletSpawnPoint.right;
+
+            Bullet bullet = new Bullet();
+            bullet.position = new Position();
+            bullet.direction = new Position();
+            bullet.id = networkIdentity.GetID();
+            bullet.position.x = bulletSpawnPoint.position.x.TwoDecimals();
+            bullet.position.y = bulletSpawnPoint.position.y.TwoDecimals();
+            bullet.direction.x = facingDirection.x.TwoDecimals(); //Grab right direction which would be the gun pointing out
+            bullet.direction.y = facingDirection.y.TwoDecimals();
+            bullet.isRight = playerAiming.IsFacingRight();
+            networkIdentity.GetSocket().Emit(NetworkTags.SHOOT_BULLET, new JSONObject(JsonUtility.ToJson(bullet)));
         }
 
         private void onMovement(Vector3 Move) {

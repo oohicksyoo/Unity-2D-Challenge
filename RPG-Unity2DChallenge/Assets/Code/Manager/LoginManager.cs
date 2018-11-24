@@ -71,8 +71,30 @@ namespace Project.Manager {
         }
 
         public void Update() {
+            #region Temp bypass of logging in
+            if(Input.GetKeyDown(KeyCode.Minus)) {
+                PlayerInformation.Instance.PlayerName = "Admin";
+                PlayerInformation.Instance.IsAdmin = true;
+
+                //Load after our login/register and admin check
+                LoaderManager.Instance.LoadLevel(SceneList.MAIN_MENU_SCREEN, delegate (string E) {
+                    LoaderManager.Instance.UnLoadLevel(SceneList.LOGIN); //Unload after new level is in
+                });
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha0)) {
+                PlayerInformation.Instance.PlayerName = "Admin-2";
+                PlayerInformation.Instance.IsAdmin = true;
+
+                //Load after our login/register and admin check
+                LoaderManager.Instance.LoadLevel(SceneList.MAIN_MENU_SCREEN, delegate (string E) {
+                    LoaderManager.Instance.UnLoadLevel(SceneList.LOGIN); //Unload after new level is in
+                });
+            }
+            #endregion
+
             //ENTER FOR LOGGING IN AND REGISTERING
-            if(Input.GetKeyDown(KeyCode.Return)) {
+            if (Input.GetKeyDown(KeyCode.Return)) {
                 if(loginState == LoginState.Login && loginButton.interactable) {
                     OnAttemptToLogin();
                 } else if(loginState == LoginState.Register && confirmButton.interactable) {

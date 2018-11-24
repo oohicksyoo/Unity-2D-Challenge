@@ -40,6 +40,10 @@ namespace Project.Networking {
         public const string JOIN_LOBBY = "joinLobby";
         public const string LEAVE_LOBBY = "leaveLobby";
         public const string CHANGE_TEAM_LOBBY = "changeTeamLobby";
+        public const string LOBBY_UPDATE = "lobbyUpdate";
         public const string START_GAME = "startGame";
+
+        //Game
+        public const string SHOOT_BULLET = "shootBullet";
     }
 }
