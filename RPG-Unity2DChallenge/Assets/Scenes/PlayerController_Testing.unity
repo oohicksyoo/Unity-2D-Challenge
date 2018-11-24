@@ -1597,6 +1597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugColour: {r: 0, g: 0.33599758, b: 1, a: 1}
+  circleSize: 0.25
 --- !u!1 &144239215
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,6 +1714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugColour: {r: 1, g: 0, b: 0, a: 1}
+  circleSize: 0.25
 --- !u!1 &197809025
 GameObject:
   m_ObjectHideFlags: 0
@@ -1754,6 +1756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugColour: {r: 0, g: 0.33599758, b: 1, a: 1}
+  circleSize: 0.25
 --- !u!1 &237323436
 GameObject:
   m_ObjectHideFlags: 0
@@ -2091,6 +2094,7 @@ GameObject:
   - component: {fileID: 632785119}
   - component: {fileID: 632785118}
   - component: {fileID: 632785117}
+  - component: {fileID: 632785129}
   - component: {fileID: 632785116}
   - component: {fileID: 632785115}
   m_Layer: 0
@@ -2130,6 +2134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 054f22e196417364c96aba02419ce96d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  networkIdentity: {fileID: 632785126}
   arm: {fileID: 1648485447}
   rotationOffset: 180
 --- !u!114 &632785117
@@ -2318,6 +2323,17 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &632785129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 632785114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f19eba01612a7c4ebd3db6ae82ada8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &637267462
 GameObject:
   m_ObjectHideFlags: 0
@@ -6779,6 +6795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugColour: {r: 0, g: 0.33599758, b: 1, a: 1}
+  circleSize: 0.25
 --- !u!1 &853190799 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1190162800071158, guid: ab2645ed35f47164795644fd80929b10,
@@ -7166,6 +7183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugColour: {r: 1, g: 0, b: 0, a: 1}
+  circleSize: 0.25
 --- !u!1 &1019874259
 GameObject:
   m_ObjectHideFlags: 0
@@ -7504,6 +7522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugColour: {r: 1, g: 0, b: 0, a: 1}
+  circleSize: 0.25
 --- !u!1 &1244416073
 GameObject:
   m_ObjectHideFlags: 0
@@ -8994,6 +9013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugColour: {r: 1, g: 0, b: 0, a: 1}
+  circleSize: 0.25
 --- !u!1 &2041570193
 GameObject:
   m_ObjectHideFlags: 0
@@ -9035,6 +9055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugColour: {r: 0, g: 0.33599758, b: 1, a: 1}
+  circleSize: 0.25
 --- !u!1 &2041752429
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,10 +7,9 @@ namespace Project.Player.Player_FlipJoe
     public class AbstractBehaviour : MonoBehaviour {
 
         [Header("Class References")]
-        protected PlayerInput_Flippo playerInput;
-        
+        protected PlayerInput_Flippo playerInput;        
         protected PlayerStats_Flippo playerStats;
-
+        protected CollisionState collisionState;
         protected Rigidbody2D rb; 
 
         // Use this for initialization
@@ -18,6 +17,7 @@ namespace Project.Player.Player_FlipJoe
             rb = GetComponent<Rigidbody2D>();
             playerInput = GetComponent<PlayerInput_Flippo>();
             playerStats = GetComponent<PlayerStats_Flippo>(); 
+            collisionState = GetComponent<CollisionState>();
         }
 
         void FixedUpdate()

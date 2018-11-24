@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -16,6 +17,9 @@ public class CollisionState : MonoBehaviour
     [SerializeField]
     private LayerMask groundLayer;
 
+    public Action TouchGround = () => { };
+    private bool previousGroundState;
+
     // Use this for initialization
     void Start()
     {
@@ -31,7 +35,13 @@ public class CollisionState : MonoBehaviour
     public bool CheckGround()
     {
         var grounds = Physics2D.CircleCastAll(transform.position + groundCheckerOffset, groundCheckerRadius, Vector2.up, float.MaxValue, groundLayer);
-        return grounds.Any();
+        bool currentGroundState = grounds.Any();
+
+        if (currentGroundState && previousGroundState != currentGroundState)
+            TouchGround.Invoke();
+        
+        previousGroundState = currentGroundState;
+        return currentGroundState;
     }
 
     public bool Collided
