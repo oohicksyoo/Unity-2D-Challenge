@@ -14,8 +14,9 @@ namespace Project.Player.Player_FlipJoe
         public Action<Vector3> OnMovement = delegate (Vector3 Value) { };
         public Action<Quaternion> OnRotation = delegate (Quaternion Value) { };
         public Action OnAction = delegate () { };
-        public Action OnDash = delegate () { };
         public Action OnInteractionRequest = delegate () { };
+        public Action OnDash = () => { };
+        public Action OnDashStop = () =>  { };
         public Action OnJump = () => { };
         public Action OnStopJump = () => { };
 
@@ -46,6 +47,11 @@ namespace Project.Player.Player_FlipJoe
         [Header("Debugging")]
         [SerializeField]
         private bool isTesting = false;
+
+        [Header("Dashing")]
+        [SerializeField]
+        private KeyCode dash = KeyCode.F;
+
 
         /*[Header("Class References")]
         [SerializeField]
@@ -93,7 +99,7 @@ namespace Project.Player.Player_FlipJoe
 
         private void checkMovement()
         {
-            OnMovement.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0));
+           // OnMovement.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0));
         }
 
         /*private void checkRotation() {
@@ -122,16 +128,17 @@ namespace Project.Player.Player_FlipJoe
             jumpCooldown.CooldownUpdate();
 
             //Handle input
-            if (Input.GetMouseButton(0) && !actionCooldown.IsOnCooldown())
+
+            if (Input.GetKey(left) || Input.GetKey(right))
             {
-                actionCooldown.StartCooldown();
-                OnAction.Invoke();
+                OnMovement.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0));
+
             }
 
-            if (Input.GetMouseButton(1) && !dashCooldown.IsOnCooldown())
+            if (Input.GetKeyUp(left) || Input.GetKeyUp(right))
             {
-                dashCooldown.StartCooldown();
-                OnDash.Invoke();
+                OnMovement.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0));
+
             }
 
             if (Input.GetKeyDown(interaction) && !interactionCooldown.IsOnCooldown())
@@ -145,11 +152,20 @@ namespace Project.Player.Player_FlipJoe
                 OnJump.Invoke();
             }
 
-            // if (Input.GetKeyUp(jump) && !jumpCooldown.IsOnCooldown())
-            // {
-            //     OnStopJump.Invoke();
-            //     jumpCooldown.StartCooldown();
-            // }
+            if (Input.GetKeyUp(jump))
+            {
+                OnStopJump.Invoke();
+            }
+
+            if (Input.GetKeyDown(dash))
+            {
+                OnDash.Invoke();
+            }
+
+            if (Input.GetKeyUp(dash))
+            {
+                OnDashStop.Invoke(); 
+            }
         }
     }
 }

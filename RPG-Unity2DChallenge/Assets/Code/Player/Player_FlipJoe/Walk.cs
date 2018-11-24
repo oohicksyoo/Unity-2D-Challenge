@@ -24,8 +24,9 @@ namespace Project.Player.Player_FlipJoe
         {
             Vector2 vel = rb.velocity;
 
-            rb.velocity = new Vector2(walk.x * playerStats.GetSpeed(), vel.y); 
+            if (vel.magnitude < playerStats.GetMinJumpVelocity() )
+                rb.velocity = new Vector2(walk.x * playerStats.GetSpeed(), vel.y);
+            
         }
-
     }
 }

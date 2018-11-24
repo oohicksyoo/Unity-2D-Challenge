@@ -21,8 +21,11 @@ namespace Project.Player.Player_FlipJoe
         private float damage = 1;
         [SerializeField]
         private float tolerance = 1;
-        [SerializeField]
+
         private float gravity;
+
+
+        [Header("Jump Stats")]
         [SerializeField]
         private float timeToJumpApex = 0.4f;
         [SerializeField]
@@ -30,14 +33,32 @@ namespace Project.Player.Player_FlipJoe
         [SerializeField]
         private float minJumpHeight = 1.0f;
 
-        private float maxJumpVelocity;
-        private float minJumpVelocity; 
+        private float dashLag; 
 
-        void Start()
+        [Header("Dash Stats")]
+        [SerializeField]
+        private float timeToDashMax = 0.4f;
+        [SerializeField]
+        private float maxDashLength = 4.0f;
+        [SerializeField]
+        private float minDashLength = 1.0f; 
+
+        private float maxJumpVelocity;
+        private float minJumpVelocity;
+
+        private float maxDashVelocity;
+        private float minDashVelocity; 
+
+        void Awake()
         {
             gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
             maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
-            minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight); 
+            minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
+
+
+            dashLag = -(2 * maxDashLength) / Mathf.Pow(timeToDashMax, 2);
+            maxDashVelocity = Mathf.Abs(dashLag) * timeToDashMax; 
+            minDashVelocity = Mathf.Sqrt(2 * Mathf.Abs(dashLag) * minDashLength);
         }
 
 
@@ -65,5 +86,21 @@ namespace Project.Player.Player_FlipJoe
         {
             return minJumpVelocity; 
         }
+
+        public float GetMaxDashVelocity()
+        {
+            return maxDashVelocity; 
+        }
+
+        public float GetMinDashVelocity()
+        {
+            return minDashVelocity;
+        }
+
+        public float GetDashLag()
+        {
+            return dashLag; 
+        }
+
     }
 }

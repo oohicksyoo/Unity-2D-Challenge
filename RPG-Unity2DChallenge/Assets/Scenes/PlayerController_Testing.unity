@@ -2129,12 +2129,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 632785114}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 054f22e196417364c96aba02419ce96d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkIdentity: {fileID: 632785126}
+  networkIdentity: {fileID: 0}
   arm: {fileID: 1648485447}
   rotationOffset: 180
 --- !u!114 &632785117
@@ -2168,6 +2168,7 @@ MonoBehaviour:
   interaction: 101
   jump: 32
   isTesting: 1
+  dash: 306
 --- !u!114 &632785119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2197,10 +2198,12 @@ MonoBehaviour:
   health: 1
   damage: 1
   tolerance: 1
-  gravity: 0
   timeToJumpApex: 1
-  maxJumpHeight: 10
+  maxJumpHeight: 15
   minJumpHeight: 4
+  timeToDashMax: 0.2
+  maxDashLength: 2
+  minDashLength: 0.5
 --- !u!114 &632785121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2239,7 +2242,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: a5847a35d0081f849b5a1e820bf30303, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -2331,7 +2334,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 632785114}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f19eba01612a7c4ebd3db6ae82ada8f, type: 3}
+  m_Script: {fileID: 11500000, guid: 51548722e248a0e43942612d54b3e318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &637267462
