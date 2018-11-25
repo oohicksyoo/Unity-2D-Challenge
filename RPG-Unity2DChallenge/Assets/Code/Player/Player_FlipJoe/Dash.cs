@@ -30,6 +30,8 @@ namespace Project.Player.Player_FlipJoe
             Vector2 vel = rb.velocity; 
 
             dashBoost = playerStats.GetMaxDashVelocity();
+            Debug.Log(moveDir);
+
             rb.velocity = new Vector2(dashBoost * Mathf.Sign(vel.x), rb.velocity.y); 
         }
 
@@ -37,8 +39,13 @@ namespace Project.Player.Player_FlipJoe
         {
             Vector2 vel = rb.velocity;
 
-            dashBoost = playerStats.GetMinDashVelocity();
-            rb.velocity = new Vector2(dashBoost * Mathf.Sign(vel.x), rb.velocity.y);
+            if (vel.x > playerStats.GetMinDashVelocity())
+            {
+                dashBoost = playerStats.GetMinDashVelocity();
+                Debug.Log(moveDir);
+
+                rb.velocity = new Vector2(dashBoost * Mathf.Sign(vel.x), rb.velocity.y);
+            }
         }
 
     }

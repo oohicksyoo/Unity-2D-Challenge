@@ -24,7 +24,10 @@ namespace Project.Player.Player_FlipJoe
         {
             Vector2 vel = rb.velocity;
 
-            if (vel.magnitude < playerStats.GetMinJumpVelocity() )
+            if (walk.x != 0)
+                moveDir = Mathf.Sign(walk.x);
+
+            if (vel.x < playerStats.GetMinDashVelocity())
                 rb.velocity = new Vector2(walk.x * playerStats.GetSpeed(), vel.y);
             
         }

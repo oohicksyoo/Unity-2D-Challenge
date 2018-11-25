@@ -2201,9 +2201,9 @@ MonoBehaviour:
   timeToJumpApex: 1
   maxJumpHeight: 15
   minJumpHeight: 4
-  timeToDashMax: 0.2
-  maxDashLength: 2
-  minDashLength: 0.5
+  timeToDashMax: 0.6
+  maxDashLength: 5
+  minDashLength: 2
 --- !u!114 &632785121
 MonoBehaviour:
   m_ObjectHideFlags: 0

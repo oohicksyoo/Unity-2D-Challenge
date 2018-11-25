@@ -129,7 +129,7 @@ namespace Project.Player.Player_FlipJoe
 
             //Handle input
 
-            if (Input.GetKey(left) || Input.GetKey(right))
+            if (!Input.GetKey(dash) && Input.GetKey(left) || !Input.GetKey(dash) && Input.GetKey(right))
             {
                 OnMovement.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0));
 
