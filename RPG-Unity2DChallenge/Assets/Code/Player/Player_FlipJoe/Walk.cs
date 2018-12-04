@@ -7,14 +7,26 @@ namespace Project.Player.Player_FlipJoe
     public class Walk : AbstractBehaviour
     {
 
-        private float dashBoost; 
+        private float dashBoost;
 
         // Use this for initialization
         void Start()
         {
-            dashBoost = 0; 
+            dashBoost = 0;
+        }
+
+        void OnEnable()
+        {
             playerInput.OnMovement += onMovement;
-            playerInput.OnDash += onDash; 
+            playerInput.OnDash += onDash;
+            ToggleScripts(false); 
+        }
+
+        void OnDisable()
+        {
+            playerInput.OnMovement -= onMovement;
+            playerInput.OnDash -= onDash;
+            ToggleScripts(true); 
         }
 
         // Update is called once per frame
@@ -34,13 +46,13 @@ namespace Project.Player.Player_FlipJoe
 
         public void onMovement(Vector3 walk)
         {
-
             Vector2 vel = rb.velocity;
-            playerStats.SetFaceDir(walk); 
-            rb.velocity = new Vector2(walk.x * playerStats.GetSpeed(), vel.y);
+            if (walk.x < 0)
+                playerStats.SetFaceDir(-1);
+            else if (walk.x > 0)
+                playerStats.SetFaceDir(1);
 
-            rb.velocity = new Vector2((Mathf.Sign(walk.x) * dashBoost) +  (walk.x * playerStats.GetSpeed()), vel.y);
-
+            rb.velocity = new Vector2((playerStats.GetFaceDir() * dashBoost) +  (walk.x * playerStats.GetSpeed()), vel.y);
         }
 
 

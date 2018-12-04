@@ -23,7 +23,7 @@ namespace Project.Player.Player_FlipJoe
         private float tolerance = 1;
 
 
-        private Vector2 playerFaceDir; 
+        private float playerFaceDir; 
         private float gravity;
 
 
@@ -34,6 +34,8 @@ namespace Project.Player.Player_FlipJoe
         private float maxJumpHeight = 4.0f;
         [SerializeField]
         private float minJumpHeight = 1.0f;
+        [SerializeField]
+        private Vector2 wallJumpVelocity; 
 
         private float dashLag; 
 
@@ -74,12 +76,17 @@ namespace Project.Player.Player_FlipJoe
             return jumpForce;
         }
 
-        public Vector2 GetFaceDir()
+        public Vector2 GetWallJumpVelocity()
+        {
+            return wallJumpVelocity; 
+        }
+
+        public float GetFaceDir()
         {
             return playerFaceDir;
         }
 
-        public void SetFaceDir(Vector2 newValue)
+        public void SetFaceDir(float newValue)
         {
             playerFaceDir = newValue; 
         }

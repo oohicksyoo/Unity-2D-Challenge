@@ -10,16 +10,15 @@ namespace Project.Player.Player_FlipJoe
 
         private float defaultGravity;
 
-        private bool againstWall;
+        protected bool againstWall;
 
-        private Walk playerWalk; 
-
+        
         // Use this for initialization
         void Start()
         {
             defaultGravity = playerStats.GetGravity();
-            playerWalk = GetComponent<Walk>();
             againstWall = false; 
+            
         }
 
         // Update is called once per frame
@@ -30,34 +29,32 @@ namespace Project.Player.Player_FlipJoe
                 if (!againstWall)
                 {
                     OnStick();
-                    Debug.Log("hey");
-                    // playerWalk.OnWall();
+                    ToggleScripts(false); 
                     againstWall = true;
                 }
-            } else
+            }
+            else
             {
                 if (againstWall)
                 {
                     OffWall();
-                    //playerWalk.OffWall();
+                    ToggleScripts(true);
                     againstWall = false; 
                 }
             }
-
-
         }
 
-        private void OnStick()
+        protected virtual void OnStick()
         {
-            if (!collisionState.CheckGround() && rb.velocity.y > 0)
+            if (!collisionState.CheckGround())
             {
-                Debug.Log("hey");
                 playerStats.SetGravity(0);
             }
         }
 
-        private void OffWall()
+        protected virtual void OffWall()
         {
+
             if (playerStats.GetGravity() != defaultGravity)
             {
                 playerStats.SetGravity(defaultGravity);

@@ -7,7 +7,10 @@ namespace Project.Player.Player_FlipJoe
     public class AbstractBehaviour : MonoBehaviour {
 
         protected enum PlayerState {Walking, WallSliding}
-        protected PlayerState playerState; 
+        protected PlayerState playerState;
+
+        [SerializeField]
+        private MonoBehaviour[] disableScripts;
 
         [Header("Class References")]
         protected PlayerInput_Flippo playerInput;        
@@ -24,11 +27,16 @@ namespace Project.Player.Player_FlipJoe
             collisionState = GetComponent<CollisionState>();
         }
 
-        
-        protected virtual void ChangeState(PlayerState newState)
+        protected virtual void ToggleScripts(bool newValue)
         {
-
+            foreach (MonoBehaviour scripts in disableScripts)
+            {
+                scripts.enabled = newValue; 
+            }
         }
+
+
+        
 
     }
 }

@@ -39,7 +39,7 @@ namespace Project.Player.Player_FlipJoe {
         // Update is called once per frame
         void FixedUpdate()
         {
-            Vector2 pos = Mathf.Sign(playerStats.GetFaceDir().x) == 1 ? rightPosition : leftPosition;
+            Vector2 pos = playerStats.GetFaceDir() == 1 ? rightPosition : leftPosition;
             pos.x += transform.position.x;
             pos.y += transform.position.y;
 
