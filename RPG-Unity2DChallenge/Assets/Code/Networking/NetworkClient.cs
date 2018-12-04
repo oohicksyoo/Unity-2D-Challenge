@@ -1,4 +1,5 @@
 ﻿//using Project.Gameplay;
+using Project.Gameplay;
 using Project.Manager;
 //using Project.Player;
 using Project.Scriptable;
@@ -253,8 +254,16 @@ namespace Project.Networking {
             });
 
             On(NetworkTags.START_GAME, (E) => {
-                LoaderManager.Instance.LoadLevel(SceneList.GetMapByIndex(1), (Val) => {
+                string id = E.data["id"].ToString();
+                string team = E.data["team"].ToString();
+                LoaderManager.Instance.LoadLevel(SceneList.GetMapByIndex(2), (Val) => {
                     LoaderManager.Instance.UnLoadLevel(SceneList.GAME_LOBBY);
+
+                    MapData md = FindObjectOfType<MapData>();
+                    md.SetBackgroundColour();
+                    Vector3 pos = md.GetStartingPosition((team == "blue") ? Team.Blue : Team.Orange);
+                    NetworkIdentity ni = networkIdentities.Single(i => i.GetID() == id);
+                    ni.transform.position = pos;
                 });
             });
 		}

@@ -33,8 +33,10 @@ namespace Project.Manager {
             timeText.text = string.Format("00:{1}{0}", time, (time.Length == 1) ? "0" : "");
             mapNameText.text = string.Format("Map: {0}", map.RemoveQuotes().ToUpper());
             for (int i = 0; i < blueTeamText.Length; i++) {
-                blueTeamText[i].text = (blueTeam[i] == null) ? "EMPTY" : blueTeam[i].ToString().RemoveQuotes().ToUpper(); //Do null check
-                orangeTeamText[i].text = (orangeTeam[i] == null) ? "EMPTY" : orangeTeam[i].ToString().RemoveQuotes().ToUpper();
+                blueTeamText[i].text = (string.IsNullOrEmpty(blueTeam[i].ToString())) ? "EMPTY" : blueTeam[i].ToString().RemoveQuotes().ToUpper(); //Do null check
+                orangeTeamText[i].text = (string.IsNullOrEmpty(orangeTeam[i].ToString())) ? "EMPTY" : orangeTeam[i].ToString().RemoveQuotes().ToUpper();
+
+                Debug.LogFormat("{0} | {1}", blueTeam[i].ToString(), orangeTeam[i].ToString());
             }
             
         }

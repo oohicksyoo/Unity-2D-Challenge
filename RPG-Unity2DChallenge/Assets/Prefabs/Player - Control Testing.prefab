@@ -545,6 +545,7 @@ MonoBehaviour:
   interaction: 101
   jump: 32
   isTesting: 1
+  dash: 102
 --- !u!114 &114487813150650508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -556,7 +557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 054f22e196417364c96aba02419ce96d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkIdentity: {fileID: 0}
+  networkIdentity: {fileID: 114047479719043262}
   arm: {fileID: 4486159008795818}
   rotationOffset: 180
 --- !u!114 &114563538011794438
@@ -575,10 +576,12 @@ MonoBehaviour:
   health: 1
   damage: 1
   tolerance: 1
-  gravity: 0
   timeToJumpApex: 1
   maxJumpHeight: 10
   minJumpHeight: 4
+  timeToDashMax: 0.4
+  maxDashLength: 4
+  minDashLength: 1
 --- !u!114 &114602908352468152
 MonoBehaviour:
   m_ObjectHideFlags: 1

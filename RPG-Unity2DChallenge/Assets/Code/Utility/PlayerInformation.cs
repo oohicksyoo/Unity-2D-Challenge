@@ -30,7 +30,7 @@ namespace Project.Utility {
 	}
 
     public enum Team {
-        Red = 0,
+        Orange = 0,
         Blue = 1
     }
 }

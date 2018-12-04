@@ -11,7 +11,8 @@ namespace Project.Utility {
         public static string GAME_LOBBY = "GameLobby";
 
         private static Dictionary<int, string> MapDictionary = new Dictionary<int, string>() {
-            {1, "Map_Testing"}
+            {1, "Map_Testing"},
+            {2, "Map_Jungle"}
         };
 
         public static string GetMapByIndex(int Value) {

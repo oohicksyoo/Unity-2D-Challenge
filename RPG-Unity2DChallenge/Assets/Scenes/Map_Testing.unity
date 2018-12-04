@@ -123,7 +123,6 @@ GameObject:
   - component: {fileID: 7532910}
   - component: {fileID: 7532912}
   - component: {fileID: 7532911}
-  - component: {fileID: 7532913}
   m_Layer: 0
   m_Name: Gameplay Layer - Collision
   m_TagString: Untagged
@@ -1468,19 +1467,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!19719996 &7532913
-TilemapCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 7532909}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
 --- !u!1 &11036828
 GameObject:
   m_ObjectHideFlags: 0
@@ -1566,7 +1552,7 @@ GameObject:
   - component: {fileID: 20871657}
   - component: {fileID: 20871658}
   m_Layer: 0
-  m_Name: Blue Spawn (2)
+  m_Name: Blue Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1597,6 +1583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugColour: {r: 0, g: 0.33599758, b: 1, a: 1}
+  circleSize: 0.25
 --- !u!1 &144239215
 GameObject:
   m_ObjectHideFlags: 0
@@ -1682,7 +1669,7 @@ GameObject:
   - component: {fileID: 157502305}
   - component: {fileID: 157502306}
   m_Layer: 0
-  m_Name: Red Spawn
+  m_Name: Orange Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1712,7 +1699,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11bbfdc61f7ee6049912c1eb6ce186af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugColour: {r: 1, g: 0, b: 0, a: 1}
+  debugColour: {r: 1, g: 0.48377457, b: 0, a: 1}
+  circleSize: 0.25
 --- !u!1 &197809025
 GameObject:
   m_ObjectHideFlags: 0
@@ -1754,6 +1742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugColour: {r: 0, g: 0.33599758, b: 1, a: 1}
+  circleSize: 0.25
 --- !u!1 &237323436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1797,8 +1786,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapName: Testing
   realmID: 1
-  blueSpawns: []
-  redSpawns: []
+  blueSpawns:
+  - {fileID: 197809026}
+  - {fileID: 2041570194}
+  - {fileID: 20871657}
+  orangeSpawns:
+  - {fileID: 157502305}
+  - {fileID: 2016418606}
+  - {fileID: 996330200}
 --- !u!1 &449796812
 GameObject:
   m_ObjectHideFlags: 0
@@ -2031,7 +2026,6 @@ GameObject:
   - component: {fileID: 723859945}
   - component: {fileID: 723859947}
   - component: {fileID: 723859946}
-  - component: {fileID: 723859948}
   m_Layer: 0
   m_Name: Gameplay Layer - No Collision
   m_TagString: Untagged
@@ -2275,8 +2269,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: -9, y: -10, z: 0}
     second:
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 26
+      m_TileSpriteIndex: 24
       m_TileMatrixIndex: 0
       m_TileColorIndex: 1
       m_ObjectToInstantiate: {fileID: 0}
@@ -2284,8 +2278,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: -8, y: -10, z: 0}
     second:
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 26
+      m_TileSpriteIndex: 24
       m_TileMatrixIndex: 0
       m_TileColorIndex: 1
       m_ObjectToInstantiate: {fileID: 0}
@@ -2293,8 +2287,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: -7, y: -10, z: 0}
     second:
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 26
+      m_TileSpriteIndex: 24
       m_TileMatrixIndex: 0
       m_TileColorIndex: 1
       m_ObjectToInstantiate: {fileID: 0}
@@ -2302,8 +2296,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: -6, y: -10, z: 0}
     second:
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 26
+      m_TileSpriteIndex: 24
       m_TileMatrixIndex: 0
       m_TileColorIndex: 1
       m_ObjectToInstantiate: {fileID: 0}
@@ -2311,8 +2305,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: -5, y: -10, z: 0}
     second:
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 26
+      m_TileSpriteIndex: 24
       m_TileMatrixIndex: 0
       m_TileColorIndex: 1
       m_ObjectToInstantiate: {fileID: 0}
@@ -2320,8 +2314,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: -4, y: -10, z: 0}
     second:
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 26
+      m_TileSpriteIndex: 24
       m_TileMatrixIndex: 0
       m_TileColorIndex: 1
       m_ObjectToInstantiate: {fileID: 0}
@@ -2329,8 +2323,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: -3, y: -10, z: 0}
     second:
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 26
+      m_TileSpriteIndex: 24
       m_TileMatrixIndex: 0
       m_TileColorIndex: 1
       m_ObjectToInstantiate: {fileID: 0}
@@ -2338,8 +2332,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: -2, y: -10, z: 0}
     second:
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 26
+      m_TileSpriteIndex: 24
       m_TileMatrixIndex: 0
       m_TileColorIndex: 1
       m_ObjectToInstantiate: {fileID: 0}
@@ -2401,8 +2395,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: 5, y: -10, z: 0}
     second:
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 26
+      m_TileSpriteIndex: 24
       m_TileMatrixIndex: 0
       m_TileColorIndex: 1
       m_ObjectToInstantiate: {fileID: 0}
@@ -6111,7 +6105,7 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 56
+  - m_RefCount: 47
     m_Data: {fileID: 11400000, guid: 6acd485e6d5b45142b9a7aa759b08fd5, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -6161,12 +6155,12 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 9
+    m_Data: {fileID: 11400000, guid: e139c1078c394fb48a4de58c74cfc6eb, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 56
+  - m_RefCount: 47
     m_Data: {fileID: 21300026, guid: ea276eac2ea74904bb96842c40902e2f, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -6212,8 +6206,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 9
+    m_Data: {fileID: 21300096, guid: 21f87a7d28295374482985cd92327d6a, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300062, guid: ea276eac2ea74904bb96842c40902e2f, type: 3}
   - m_RefCount: 1
@@ -6244,8 +6238,8 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -28, y: -10, z: 0}
-  m_Size: {x: 56, y: 24, z: 1}
+  m_Origin: {x: -28, y: -14, z: 0}
+  m_Size: {x: 56, y: 28, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -6265,60 +6259,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!19719996 &723859948
-TilemapCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 723859944}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
---- !u!1 &749152985
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 749152986}
-  - component: {fileID: 749152987}
-  m_Layer: 0
-  m_Name: Blue Spawn (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &749152986
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 749152985}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.5, y: -6.55, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1019874260}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &749152987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 749152985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11bbfdc61f7ee6049912c1eb6ce186af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debugColour: {r: 0, g: 0.33599758, b: 1, a: 1}
 --- !u!1 &906333978
 GameObject:
   m_ObjectHideFlags: 0
@@ -6404,7 +6344,7 @@ GameObject:
   - component: {fileID: 996330200}
   - component: {fileID: 996330201}
   m_Layer: 0
-  m_Name: Red Spawn (2)
+  m_Name: Orange Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6434,7 +6374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11bbfdc61f7ee6049912c1eb6ce186af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugColour: {r: 1, g: 0, b: 0, a: 1}
+  debugColour: {r: 1, g: 0.48377457, b: 0, a: 1}
+  circleSize: 0.25
 --- !u!1 &1019874259
 GameObject:
   m_ObjectHideFlags: 0
@@ -6463,7 +6404,6 @@ Transform:
   - {fileID: 197809026}
   - {fileID: 2041570194}
   - {fileID: 20871657}
-  - {fileID: 749152986}
   m_Father: {fileID: 1787076496}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6646,47 +6586,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1215144340
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1215144341}
-  - component: {fileID: 1215144342}
-  m_Layer: 0
-  m_Name: Red Spawn (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1215144341
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1215144340}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.5, y: -6.55, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1651864558}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1215144342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1215144340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11bbfdc61f7ee6049912c1eb6ce186af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debugColour: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1253222960
 GameObject:
   m_ObjectHideFlags: 0
@@ -6921,7 +6820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1651864558}
   m_Layer: 0
-  m_Name: '[ Red Team ]'
+  m_Name: '[ Orange Team ]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6940,7 +6839,6 @@ Transform:
   - {fileID: 157502305}
   - {fileID: 2016418606}
   - {fileID: 996330200}
-  - {fileID: 1215144341}
   m_Father: {fileID: 1787076496}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7338,7 +7236,7 @@ GameObject:
   - component: {fileID: 2016418606}
   - component: {fileID: 2016418607}
   m_Layer: 0
-  m_Name: Red Spawn (1)
+  m_Name: Orange Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7368,7 +7266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11bbfdc61f7ee6049912c1eb6ce186af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugColour: {r: 1, g: 0, b: 0, a: 1}
+  debugColour: {r: 1, g: 0.48377457, b: 0, a: 1}
+  circleSize: 0.25
 --- !u!1 &2041570193
 GameObject:
   m_ObjectHideFlags: 0
@@ -7379,7 +7278,7 @@ GameObject:
   - component: {fileID: 2041570194}
   - component: {fileID: 2041570195}
   m_Layer: 0
-  m_Name: Blue Spawn (1)
+  m_Name: Blue Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7410,6 +7309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugColour: {r: 0, g: 0.33599758, b: 1, a: 1}
+  circleSize: 0.25
 --- !u!1 &2091889673
 GameObject:
   m_ObjectHideFlags: 0
