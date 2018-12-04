@@ -2085,17 +2085,18 @@ GameObject:
   - component: {fileID: 632785126}
   - component: {fileID: 632785125}
   - component: {fileID: 632785124}
+  - component: {fileID: 632785118}
+  - component: {fileID: 632785120}
+  - component: {fileID: 632785128}
   - component: {fileID: 632785123}
   - component: {fileID: 632785127}
   - component: {fileID: 632785122}
   - component: {fileID: 632785121}
-  - component: {fileID: 632785128}
-  - component: {fileID: 632785120}
+  - component: {fileID: 632785130}
   - component: {fileID: 632785119}
-  - component: {fileID: 632785118}
   - component: {fileID: 632785117}
-  - component: {fileID: 632785129}
   - component: {fileID: 632785116}
+  - component: {fileID: 632785129}
   - component: {fileID: 632785115}
   m_Layer: 0
   m_Name: Player - Control Testing
@@ -2134,7 +2135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 054f22e196417364c96aba02419ce96d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkIdentity: {fileID: 0}
+  networkIdentity: {fileID: 632785126}
   arm: {fileID: 1648485447}
   rotationOffset: 180
 --- !u!114 &632785117
@@ -2198,12 +2199,12 @@ MonoBehaviour:
   health: 1
   damage: 1
   tolerance: 1
-  timeToJumpApex: 1
-  maxJumpHeight: 15
-  minJumpHeight: 4
+  timeToJumpApex: 0.3
+  maxJumpHeight: 4
+  minJumpHeight: 1
   timeToDashMax: 0.6
-  maxDashLength: 5
-  minDashLength: 2
+  maxDashLength: 2
+  minDashLength: 1
 --- !u!114 &632785121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2321,12 +2322,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8debe71be6ebc5b4f84e3a7b2acac257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundCheckerRadius: 0.04
+  colCheckRadius: 0.12
   groundCheckerOffset: {x: 0, y: -1, z: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
+  leftPosition: {x: -0.4, y: -0.6}
+  rightPosition: {x: 0.4, y: -0.6}
 --- !u!114 &632785129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 632785114}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79d4a1d84ac5e564ca05bed213c75385, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &632785130
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2334,7 +2348,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 632785114}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51548722e248a0e43942612d54b3e318, type: 3}
+  m_Script: {fileID: 11500000, guid: 8087b2035a26895479c3c1db333e61bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &637267462

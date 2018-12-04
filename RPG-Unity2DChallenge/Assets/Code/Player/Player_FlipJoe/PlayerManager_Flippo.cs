@@ -21,14 +21,7 @@ namespace Project.Player.Player_FlipJoe
             playerInput.OnJump += onJump;
             playerInput.OnStopJump += onStopJump;
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-            if (collisionState.Collided) { }
-                //anim.SetBool("Jump", false);
-        }
-
+        
         private void onMovement(Vector3 move)
         {
             if (move.x > 0 || move.x < 0)

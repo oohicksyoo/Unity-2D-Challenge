@@ -99,7 +99,7 @@ namespace Project.Player.Player_FlipJoe
 
         private void checkMovement()
         {
-           // OnMovement.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0));
+            OnMovement.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0));
         }
 
         /*private void checkRotation() {
@@ -129,17 +129,17 @@ namespace Project.Player.Player_FlipJoe
 
             //Handle input
 
-            if (!Input.GetKey(dash) && Input.GetKey(left) || !Input.GetKey(dash) && Input.GetKey(right))
-            {
-                OnMovement.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0));
+            //if ( Input.GetKey(left) ||  Input.GetKey(right))
+            //{
+            //    OnMovement.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0));
 
-            }
+            //}
 
-            if (Input.GetKeyUp(left) || Input.GetKeyUp(right))
-            {
-                OnMovement.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0));
+            //if (Input.GetKeyUp(left) || Input.GetKeyUp(right))
+            //{
+            //    OnMovement.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0));
 
-            }
+            //}
 
             if (Input.GetKeyDown(interaction) && !interactionCooldown.IsOnCooldown())
             {

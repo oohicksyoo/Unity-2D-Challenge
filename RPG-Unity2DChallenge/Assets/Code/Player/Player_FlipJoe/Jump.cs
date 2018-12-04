@@ -14,12 +14,18 @@ namespace Project.Player.Player_FlipJoe
             playerInput.OnStopJump += onMinJump; 
         }
 
+        public void FixedUpdate()
+        {
+            rb.velocity += new Vector2(rb.velocity.x, playerStats.GetGravity())  * Time.deltaTime;
+        }
+
         public void onMaxJump()
         {
             if(collisionState.CheckGround()) 
             {
                 Vector2 vel = rb.velocity;
-                rb.velocity = new Vector2(vel.x,playerStats.GetMaxJumpVelocity()); 
+                
+                rb.velocity = new Vector2(vel.x,playerStats.GetMaxJumpVelocity());
             }
         }
 
@@ -27,7 +33,9 @@ namespace Project.Player.Player_FlipJoe
         {
             Vector3 vel = rb.velocity;
             if (vel.y > playerStats.GetMinJumpVelocity())
-                rb.velocity = new Vector2(vel.x,playerStats.GetMinJumpVelocity());
+            {
+                rb.velocity = new Vector2(vel.x, playerStats.GetMinJumpVelocity());
+            }
         }
     }
 }

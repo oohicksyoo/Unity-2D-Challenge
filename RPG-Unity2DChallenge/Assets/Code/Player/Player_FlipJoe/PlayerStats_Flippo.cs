@@ -22,6 +22,8 @@ namespace Project.Player.Player_FlipJoe
         [SerializeField]
         private float tolerance = 1;
 
+
+        private Vector2 playerFaceDir; 
         private float gravity;
 
 
@@ -47,14 +49,14 @@ namespace Project.Player.Player_FlipJoe
         private float minJumpVelocity;
 
         private float maxDashVelocity;
-        private float minDashVelocity; 
+        private float minDashVelocity;
+        private float dashBoost; 
 
         void Awake()
         {
             gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
             maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
             minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
-
 
             dashLag = -(2 * maxDashLength) / Mathf.Pow(timeToDashMax, 2);
             maxDashVelocity = Mathf.Abs(dashLag) * timeToDashMax; 
@@ -72,9 +74,24 @@ namespace Project.Player.Player_FlipJoe
             return jumpForce;
         }
 
+        public Vector2 GetFaceDir()
+        {
+            return playerFaceDir;
+        }
+
+        public void SetFaceDir(Vector2 newValue)
+        {
+            playerFaceDir = newValue; 
+        }
+
         public float GetGravity()
         {
             return gravity; 
+        }
+
+        public void SetGravity(float newValue)
+        {
+            gravity = newValue; 
         }
 
         public float GetMaxJumpVelocity()
@@ -101,6 +118,5 @@ namespace Project.Player.Player_FlipJoe
         {
             return dashLag; 
         }
-
     }
 }
