@@ -202,7 +202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1810922902478024
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +565,7 @@ MonoBehaviour:
   right: 100
   interaction: 101
   jump: 32
-  isTesting: 1
+  isTesting: 0
   dash: 306
 --- !u!114 &114487813150650508
 MonoBehaviour:
@@ -573,7 +573,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1065765389003770}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 054f22e196417364c96aba02419ce96d, type: 3}
   m_Name: 
@@ -858,7 +858,7 @@ SpriteRenderer:
   m_SortingLayerID: -1972760139
   m_SortingLayer: 4
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 15664226c5fbdd247b4b60b1f1cee559, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f0941039d1dfa884ab5b70bc3f54fe97, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

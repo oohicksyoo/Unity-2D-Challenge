@@ -116,6 +116,13 @@ namespace Project.Networking {
                     } else {
                         //Remove Rigid body from non controlled players
                         DestroyImmediate(player.GetComponent<Rigidbody2D>());
+                        List<Project.Player.Player_FlipJoe.AbstractBehaviour> behaviours = player.GetComponents<Project.Player.Player_FlipJoe.AbstractBehaviour>().ToList();
+                        while(behaviours.Count > 0) {
+                            Project.Player.Player_FlipJoe.AbstractBehaviour behaviour = behaviours[0];
+                            DestroyImmediate(behaviour);
+                            behaviours.Remove(behaviour);
+                        }
+
                     }
                     networkIdentities.Add(ni);
                 }

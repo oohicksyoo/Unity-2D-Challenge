@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Project.Networking;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,13 +19,19 @@ namespace Project.Player.Player_FlipJoe
         protected CollisionState collisionState;
         protected PlayerAiming playerAiming; 
         protected Rigidbody2D rb;
+        protected NetworkIdentity networkIdentity;
 
         // Use this for initialization
         void Awake() {
+            networkIdentity = GetComponent<NetworkIdentity>();
             rb = GetComponent<Rigidbody2D>();
             playerInput = GetComponent<PlayerInput_Flippo>();
-            playerStats = GetComponent<PlayerStats_Flippo>(); 
+            playerStats = GetComponent<PlayerStats_Flippo>();
             collisionState = GetComponent<CollisionState>();
+        }
+
+        protected bool isControlling() {
+            return networkIdentity.IsControlling();
         }
 
         protected virtual void ToggleScripts(bool newValue)

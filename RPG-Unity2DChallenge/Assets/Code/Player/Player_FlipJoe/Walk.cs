@@ -17,16 +17,20 @@ namespace Project.Player.Player_FlipJoe
 
         void OnEnable()
         {
-            playerInput.OnMovement += onMovement;
-            playerInput.OnDash += onDash;
-            ToggleScripts(false); 
+            if (isControlling()) {
+                playerInput.OnMovement += onMovement;
+                playerInput.OnDash += onDash;
+                ToggleScripts(false);
+            }
         }
 
         void OnDisable()
         {
-            playerInput.OnMovement -= onMovement;
-            playerInput.OnDash -= onDash;
-            ToggleScripts(true); 
+            if (isControlling()) {
+                playerInput.OnMovement -= onMovement;
+                playerInput.OnDash -= onDash;
+                ToggleScripts(true);
+            }
         }
 
         // Update is called once per frame
