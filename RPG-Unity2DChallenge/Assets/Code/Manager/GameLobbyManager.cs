@@ -36,7 +36,7 @@ namespace Project.Manager {
                 blueTeamText[i].text = (string.IsNullOrEmpty(blueTeam[i].ToString())) ? "EMPTY" : blueTeam[i].ToString().RemoveQuotes().ToUpper(); //Do null check
                 orangeTeamText[i].text = (string.IsNullOrEmpty(orangeTeam[i].ToString())) ? "EMPTY" : orangeTeam[i].ToString().RemoveQuotes().ToUpper();
 
-                Debug.LogFormat("{0} | {1}", blueTeam[i].ToString(), orangeTeam[i].ToString());
+                //Debug.LogFormat("{0} | {1}", blueTeam[i].ToString(), orangeTeam[i].ToString());
             }
             
         }

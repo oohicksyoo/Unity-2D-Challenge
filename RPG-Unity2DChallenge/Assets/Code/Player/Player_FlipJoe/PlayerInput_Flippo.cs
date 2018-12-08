@@ -129,17 +129,11 @@ namespace Project.Player.Player_FlipJoe
 
             //Handle input
 
-            //if ( Input.GetKey(left) ||  Input.GetKey(right))
-            //{
-            //    OnMovement.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0));
-
-            //}
-
-            //if (Input.GetKeyUp(left) || Input.GetKeyUp(right))
-            //{
-            //    OnMovement.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0));
-
-            //}
+            //Action
+            if (Input.GetMouseButton(0) && !actionCooldown.IsOnCooldown()) {
+                actionCooldown.StartCooldown();
+                OnAction.Invoke();
+            }
 
             if (Input.GetKeyDown(interaction) && !interactionCooldown.IsOnCooldown())
             {

@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 4418702571682792}
   - component: {fileID: 212673703341629264}
   m_Layer: 0
-  m_Name: Boddy
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,6 +135,22 @@ GameObject:
   - component: {fileID: 212091846495447508}
   m_Layer: 0
   m_Name: Left Arm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1381584708245342
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4043816702860430}
+  - component: {fileID: 114868027354141274}
+  m_Layer: 0
+  m_Name: Bullet Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -248,6 +264,19 @@ Transform:
   m_Father: {fileID: 4211051944114078}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4043816702860430
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1381584708245342}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.46, y: 0.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4304967954426708}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4196474761216054
 Transform:
   m_ObjectHideFlags: 1
@@ -304,7 +333,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -1, w: 0.00000020861626}
   m_LocalPosition: {x: -0.061999943, y: -0.15599993, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4043816702860430}
   m_Father: {fileID: 4486159008795818}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -597,7 +627,7 @@ MonoBehaviour:
   health: 1
   damage: 1
   tolerance: 1
-  timeToJumpApex: 0.3
+  timeToJumpApex: 1
   maxJumpHeight: 4
   minJumpHeight: 1
   wallJumpVelocity: {x: 5, y: 10}
@@ -630,6 +660,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oldPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &114868027354141274
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1381584708245342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11bbfdc61f7ee6049912c1eb6ce186af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugColour: {r: 1, g: 0.6640479, b: 0, a: 1}
+  circleSize: 0.1
 --- !u!114 &114902140513018392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -685,6 +728,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784e96d08cc45274f849d9b4835999b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletSpawnPoint: {fileID: 4043816702860430}
+  playerAiming: {fileID: 114487813150650508}
+  networkIdentity: {fileID: 114047479719043262}
 --- !u!212 &212091846495447508
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -45,5 +45,6 @@ namespace Project.Networking {
 
         //Game
         public const string SHOOT_BULLET = "shootBullet";
+        public const string DESTROY_BULLET_HELPER = "destroyBulletHelper";
     }
 }

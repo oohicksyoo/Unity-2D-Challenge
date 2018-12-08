@@ -765,6 +765,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerName: Player
   IsAdmin: 0
+  CurrentTeam: 1
   SpawnLocation: {x: 0, y: 0, z: 0}
   CurrentRealm: 1
   OldRealm: -1

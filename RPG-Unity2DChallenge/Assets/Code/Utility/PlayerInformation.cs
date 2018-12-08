@@ -10,6 +10,8 @@ namespace Project.Utility {
         [HideInInspector]
         public bool IsAdmin = false;
         [HideInInspector]
+        public Team CurrentTeam = Team.Blue;
+        [HideInInspector]
         public Vector3 SpawnLocation = Vector3.zero;
         [HideInInspector]
         public int CurrentRealm = 1;

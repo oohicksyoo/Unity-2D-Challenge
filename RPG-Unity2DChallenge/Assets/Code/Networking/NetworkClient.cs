@@ -74,7 +74,7 @@ namespace Project.Networking {
             });
 
             On(NetworkTags.REGISTER, (E) => {
-                ClientID = E.data["id"].ToString();
+                ClientID = E.data["id"].ToString().RemoveQuotes();
                 Debug.LogFormat("Registering: Our Client Is ({0})", ClientID);
 
                 VersionData vd = new VersionData();
@@ -87,7 +87,7 @@ namespace Project.Networking {
             On(NetworkTags.SPAWN, (E) => {
                 OnSpawn.Invoke(E);
                 string username = E.data["username"].ToString();
-                string id = E.data["id"].ToString();
+                string id = E.data["id"].ToString().RemoveQuotes();
                 bool admin = E.data["isAdmin"].b;
                 float x = E.data["position"]["x"].f;
                 float y = E.data["position"]["y"].f;
@@ -129,7 +129,7 @@ namespace Project.Networking {
             });
 
             On(NetworkTags.DISCONNECT, (E) => {               
-                string id = E.data["id"].ToString();
+                string id = E.data["id"].ToString().RemoveQuotes();
                 Debug.LogFormat("Disconnected: Client ({0})", id);
 
                 List<NetworkIdentity> clientObjects = networkIdentities.Where(x => x.GetID() == id).ToList();
@@ -143,7 +143,7 @@ namespace Project.Networking {
 
             On(NetworkTags.UPDATE_POSITION, (E) => {
                 //Debug.LogFormat("JSON DATA: {0}", E.data.ToString());
-                string id = E.data["id"].ToString();
+                string id = E.data["id"].ToString().RemoveQuotes();
                 float x = E.data["position"]["x"].f;
                 float y = E.data["position"]["y"].f;
                 //Debug.LogFormat("Updating position for player {0}:({1},{2})", id, x, y);
@@ -161,7 +161,7 @@ namespace Project.Networking {
 
             On(NetworkTags.SERVER_SPAWN, (E) => {                
                 string name = E.data["name"].str;
-                string id = E.data["id"].ToString();
+                string id = E.data["id"].ToString().RemoveQuotes();
                 float x = E.data["position"]["x"].f;
                 float y = E.data["position"]["y"].f;
                 bool isRight = E.data["isRight"].b;
@@ -196,7 +196,7 @@ namespace Project.Networking {
             });
 
             On(NetworkTags.SERVER_UNSPAWN, (E) => {
-                string id = E.data["id"].ToString();
+                string id = E.data["id"].ToString().RemoveQuotes();
                 NetworkIdentity ni = networkIdentities.Single(i => i.GetID() == id);
                 networkIdentities.Remove(ni);
                 DestroyImmediate(ni.gameObject);
@@ -261,15 +261,21 @@ namespace Project.Networking {
             });
 
             On(NetworkTags.START_GAME, (E) => {
-                string id = E.data["id"].ToString();
-                string team = E.data["team"].ToString();
+                string id = E.data["id"].ToString().RemoveQuotes();
+                string team = E.data["team"].ToString().RemoveQuotes();
+
+                PlayerInformation.Instance.CurrentTeam = (team == "blue") ? Team.Blue : Team.Orange;
+                Debug.LogFormat("ID: {0} | {1} | {2}", id, team, PlayerInformation.Instance.CurrentTeam);
+
                 LoaderManager.Instance.LoadLevel(SceneList.GetMapByIndex(2), (Val) => {
                     LoaderManager.Instance.UnLoadLevel(SceneList.GAME_LOBBY);
 
+                    Debug.LogFormat("ID: {0} | {1}", ClientID, PlayerInformation.Instance.CurrentTeam);
+
                     MapData md = FindObjectOfType<MapData>();
                     md.SetBackgroundColour();
-                    Vector3 pos = md.GetStartingPosition((team == "blue") ? Team.Blue : Team.Orange);
-                    NetworkIdentity ni = networkIdentities.Single(i => i.GetID() == id);
+                    Vector3 pos = md.GetStartingPosition(PlayerInformation.Instance.CurrentTeam);
+                    NetworkIdentity ni = networkIdentities.Single(i => i.GetID() == ClientID);
                     ni.transform.position = pos;
                 });
             });
